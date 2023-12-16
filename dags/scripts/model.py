@@ -1,10 +1,7 @@
 import config
-import uuid
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, Column, String
-from uuid import uuid4
-
 
 class Connection(object):
     def __init__(self):
@@ -20,9 +17,7 @@ class Connection(object):
     def get_engine(self):
         return self.engine
 
-
 Base = declarative_base()
-
 
 def init_db():
     # create a db connection

@@ -1,7 +1,6 @@
 import csv
 import os
 import uuid
-from uuid import uuid4
 from model import Connection, Users
 import dags.scripts.config as config
 
@@ -71,6 +70,7 @@ def main():
 
     # Connect with the db
     db_connection = Connection()
+
     session = db_connection.get_session()
     # First delete all previous users table data from schema raw
     session.query(Users).delete()

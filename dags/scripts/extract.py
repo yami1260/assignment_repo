@@ -1,7 +1,5 @@
 import json
 import os
-import pathlib
-from os.path import exists
 from urllib.request import urlopen
 import pandas as pd
 import requests

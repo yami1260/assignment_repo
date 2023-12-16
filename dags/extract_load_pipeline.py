@@ -19,7 +19,7 @@ with DAG(
     # migration >> extract >> load
     migration_task = BashOperator(
         task_id='migration',
-        bash_command='python D:/Yamini/Task/home_assignment/dags/scripts/migration.py',
+        bash_command='python /opt/airflow/dags/migration.py',
         dag=dag
     )
     # Extract Task
@@ -31,7 +31,7 @@ with DAG(
     # Load Task
     load_task = BashOperator(
         task_id='load',
-        bash_command='python D:/Yamini/Task/home_assignment/dags/scripts/load.py',
+        bash_command='python /opt/airflow/dags/load.py',
         dag=dag
     )
 

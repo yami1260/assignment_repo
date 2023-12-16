@@ -1,28 +1,18 @@
-import argparse
 from pathlib import Path
 from sqlalchemy import text
-from model import Connection
 import config
-import pandas as pd
-
+from model import Connection
 
 # Initialize directory and csv file
 # create them if does not exist programatically
 def init_csv_file():
     # Get the directory path
     csv_dir = Path(config.CSV_FILE_DIR)
-
     # Create the directory if it does not exist
     csv_dir.mkdir(parents=True, exist_ok=True)
-
     # Get the file path
     csv_file_path = csv_dir / "random_user.csv"
-    # Create an empty CSV file if it does not exist
-    if not csv_file_path.is_file():
-        pd.DataFrame(columns=["email", "phone"]).to_csv(csv_file_path, index=False)
-
     print(f"CSV file and directory initialized at: {csv_file_path}")
-
 
 # Initialize schema and table
 def init_db():
@@ -34,7 +24,6 @@ def init_db():
     # close db
     db_connection = Connection()
     engine = db_connection.get_engine()
-
     # Get a DB session
     #db_connection.get_session ( )
     connection = engine.connect()
@@ -84,11 +73,8 @@ def init_db():
     except Exception:
         trans.rollback()
         raise
-
-
     # Close db
     trans.close()
-
 
 if __name__ == '__main__':
     init_csv_file()
